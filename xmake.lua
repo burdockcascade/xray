@@ -4,7 +4,7 @@ set_description("XRay - A simple raylib example project using xmake")
 set_languages("cxx23")
 
 -- x-release-please-start-version
-set_version("0.0.0")
+set_version("0.2.0")
 -- x-release-please-end
 
 add_rules("mode.debug", "mode.release")
