@@ -34,8 +34,10 @@ jobs:
       - name: Install Linux Dependencies
         if: runner.os == 'Linux'
         run: |
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
           sudo apt-get update
           sudo apt-get install -y libgl1-mesa-dev libxi-dev libxcursor-dev libxrandr-dev libxinerama-dev libx11-dev libwayland-dev libxkbcommon-dev
+          sudo apt-get install -y gcc-14 g++-14
 
       # 3. Cache Xmake Packages
       # This caches downloaded libs (Raylib, spdlog) so you don't recompile them every time.
