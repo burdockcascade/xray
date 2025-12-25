@@ -34,10 +34,8 @@ jobs:
       - name: Install Linux Dependencies
         if: runner.os == 'Linux'
         run: |
-          sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
           sudo apt-get update
           sudo apt-get install -y libgl1-mesa-dev libxi-dev libxcursor-dev libxrandr-dev libxinerama-dev libx11-dev libwayland-dev libxkbcommon-dev
-          xmake f --toolchain=clang --cxx=clang++ --cc=clang --ld=clang++
 
       # 3. Cache Xmake Packages
       # This caches downloaded libs (Raylib, spdlog) so you don't recompile them every time.
@@ -54,7 +52,7 @@ jobs:
       # 4. Configure Project
       # -y auto-confirms package installation
       - name: Configure
-        run: xmake f -y -m release
+        run: xmake f --toolchain=clang --cxx=clang++ --cc=clang --ld=clang++ -y -m release
 
       # 5. Build
       - name: Build
