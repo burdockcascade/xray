@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<application>
+
+    <!-- Window configuration -->
+    <window title="Hello, World!" height="600" width="800" fps="60"/>
+
+    <!-- Asset definitions -->
+    <assets>
+        <texture id="exampleTexture" path="C:\Workspace\c\xray\examples\sample.png" />
+    </assets>
+
+    <!-- Scene definitions -->
+    <scenes>
+        <scene name="main">
+            <sprite id="exampleSprite" x="400" y="300" texture-id="exampleTexture" />
+        </scene>
+    </scenes>
+
+</application>

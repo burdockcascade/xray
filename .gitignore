@@ -7,3 +7,5 @@ build/
 
 # IDEs
 .idea/
+
+CMakeLists.txt
