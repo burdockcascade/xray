@@ -4,8 +4,12 @@
 #include "logger.hpp"
 #include "scenegraph/scene_node.hpp"
 #include "utils.hpp"
+#include "scenegraph/2d/circle.hpp"
 #include "scenegraph/2d/sprite.hpp"
 #include "scenegraph/2d/label.hpp"
+#include "scenegraph/2d/rectangle.hpp"
+#include "scenegraph/2d/triangle.hpp"
+#include "scenegraph/2d/line.hpp"
 
 std::shared_ptr<SceneNode> ParseNode(pugi::xml_node xmlNode) {
 
@@ -17,6 +21,10 @@ std::shared_ptr<SceneNode> ParseNode(pugi::xml_node xmlNode) {
         {"node",   SceneNode::Create},
         {"sprite", SpriteNode::Create},
         {"label",   LabelNode::Create},
+        {"circle", CircleNode::Create},
+        {"rectangle", RectangleNode::Create},
+        {"triangle", TriangleNode::Create},
+        {"line", LineNode::Create}
     };
 
     // 2. Lookup and Create
