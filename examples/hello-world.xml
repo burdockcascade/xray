@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<application>
+
+    <!-- Window configuration -->
+    <window title="Hello, World!" height="600" width="800" resizable="true" fps="60" fullscreen="false" bg-color="black"/>
+
+    <!-- Scene definitions -->
+    <scenes>
+        <scene name="main">
+            <label id="greeting" text="Hello, World!" x="50" y="50" font-size="56" color="blue"/>
+        </scene>
+    </scenes>
+
+</application>

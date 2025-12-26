@@ -5,7 +5,7 @@
 #include "scenegraph/scene_node.hpp"
 #include "utils.hpp"
 #include "scenegraph/2d/sprite.hpp"
-
+#include "scenegraph/2d/label.hpp"
 
 std::shared_ptr<SceneNode> ParseNode(pugi::xml_node xmlNode) {
 
@@ -15,7 +15,8 @@ std::shared_ptr<SceneNode> ParseNode(pugi::xml_node xmlNode) {
     static const std::unordered_map<std::string_view, std::function<std::shared_ptr<SceneNode>(const pugi::xml_node&)>>
     nodeParsers = {
         {"node",   SceneNode::Create},
-        {"sprite", SpriteNode::Create}
+        {"sprite", SpriteNode::Create},
+        {"label",   LabelNode::Create},
     };
 
     // 2. Lookup and Create
