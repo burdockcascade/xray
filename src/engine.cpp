@@ -47,7 +47,7 @@ Engine::Engine(const AppConfig& config) : m_config(config) {
     for (const auto& sceneCfg : config.scenes) {
         Node scene;
         scene.id = sceneCfg.name;
-        scene.children = sceneCfg.rootNodes;
+        scene.children = sceneCfg.layers;
         m_scenes.push_back(scene);
     }
 

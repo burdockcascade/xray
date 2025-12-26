@@ -12,7 +12,9 @@
     <!-- Scene definitions -->
     <scenes>
         <scene name="main">
-            <sprite id="exampleSprite" x="400" y="300" texture-id="exampleTexture" />
+            <layer id="mainLayer">
+                <sprite id="exampleSprite" x="400" y="300" texture-id="exampleTexture" />
+            </layer>
         </scene>
     </scenes>
 

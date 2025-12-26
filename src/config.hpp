@@ -31,7 +31,7 @@ struct WindowConfig {
 
 struct SceneConfig {
     std::string name;
-    std::vector<std::shared_ptr<Node>> rootNodes;
+    std::vector<std::shared_ptr<Node>> layers;
 };
 
 struct AppConfig {

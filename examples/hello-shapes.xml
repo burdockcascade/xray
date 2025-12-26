@@ -6,12 +6,13 @@
 
     <scenes>
         <scene name="main">
-            <triangle id="myTriangle" x1="400" y1="50" x2="10" y2="400" x3="350" y3="400" color="green" filled="true"/>
-            <circle id="myCircle" x="200" y="200" radius="50" color="red" filled="true"/>
-            <rectangle id="myRectangle" x="300" y="150" width="120" height="80" color="orange" filled="true"/>
-            <rectangle id="myRectangle2" x="500" y="350" width="220" height="180" color="blue" filled="true" corner-radius="0.2" corner-segments="2"/>
-            <polygon id="myPolygon" points="600,100 650,150 700,100 750,150 700,200 650,200" color="purple" filled="true"/>
-            <line id="myLine" x1="50" y1="50" x2="200" y2="200" color="black" stroke-width="5"/>
+            <layer id="mainLayer">
+                <triangle id="myTriangle" x1="400" y1="50" x2="10" y2="400" x3="350" y3="400" color="green" filled="true"/>
+                <circle id="myCircle" x="200" y="200" radius="50" color="red" filled="true"/>
+                <rectangle id="myRectangle" x="300" y="150" width="120" height="80" color="orange" filled="true"/>
+                <rectangle id="myRectangle2" x="500" y="350" width="220" height="180" color="blue" filled="true" corner-radius="0.2" corner-segments="2"/>
+                <line id="myLine" x1="50" y1="50" x2="200" y2="200" color="black" stroke-width="5"/>
+            </layer>
         </scene>
     </scenes>
 

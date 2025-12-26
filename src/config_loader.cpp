@@ -10,6 +10,7 @@
 #include "scenegraph/2d/rectangle.hpp"
 #include "scenegraph/2d/triangle.hpp"
 #include "scenegraph/2d/line.hpp"
+#include "scenegraph/scene/layer.hpp"
 
 std::shared_ptr<Node> ParseNode(pugi::xml_node xmlNode) {
 
@@ -19,6 +20,7 @@ std::shared_ptr<Node> ParseNode(pugi::xml_node xmlNode) {
     static const std::unordered_map<std::string_view, std::function<std::shared_ptr<Node>(const pugi::xml_node&)>>
     nodeParsers = {
         {"node",   Node::Create},
+        {"layer",   LayerNode::Create},
         {"sprite", SpriteNode::Create},
         {"label",   LabelNode::Create},
         {"circle", CircleNode::Create},
@@ -114,6 +116,7 @@ AppConfig config_loader::Load(const std::filesystem::path& path) {
         LOG_WARN("No <scenes> node found in configuration.");
     }
 
+    // Parse Scenes
     if (auto scenesNode = root.child("scenes")) {
         for (auto sceneNode : scenesNode.children("scene")) {
             SceneConfig sceneCfg;
@@ -121,8 +124,12 @@ AppConfig config_loader::Load(const std::filesystem::path& path) {
 
             // Iterate over all top-level nodes in this scene
             for (auto xmlChild : sceneNode.children()) {
+                if (xmlChild.name() != std::string_view("layer")) {
+                    LOG_ERROR("Top-level node in scene '{}' is not a <layer>. Found '<{}>'.", sceneCfg.name, xmlChild.name());
+                    break;
+                }
                 if (auto rootNode = ParseNode(xmlChild)) {
-                    sceneCfg.rootNodes.push_back(rootNode);
+                    sceneCfg.layers.push_back(rootNode);
                 }
             }
             config.scenes.push_back(sceneCfg);
