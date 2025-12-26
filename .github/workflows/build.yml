@@ -51,7 +51,20 @@ jobs:
 
       # 4. Configure Project
       # -y auto-confirms package installation
-      - name: Configure
+      - name: Configure (Windows)
+        if: runner.os == 'Windows'
+        run: xmake f --toolchain=msvc -y -m release
+
+      # 4. Configure Project
+      # -y auto-confirms package installation
+      - name: Configure (MacOS)
+        if: runner.os == 'macOS'
+        run: xmake f --toolchain=clang --cxx=clang++ --cc=clang --ld=clang++ -y -m release
+
+      # 4. Configure Project
+      # -y auto-confirms package installation
+      - name: Configure (Linux)
+        if: runner.os == 'Linux'
         run: xmake f --toolchain=clang --cxx=clang++ --cc=clang --ld=clang++ -y -m release
 
       # 5. Build
