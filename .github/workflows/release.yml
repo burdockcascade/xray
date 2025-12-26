@@ -1,5 +1,5 @@
 name: Release
-
+concurrency: release-${{ github.ref }}
 on:
   push:
     branches:
