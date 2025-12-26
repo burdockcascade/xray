@@ -5,7 +5,7 @@
  * @param xmlNode The XML node containing sprite attributes.
  * @return A shared pointer to the created SpriteNode.
  */
-std::shared_ptr<SceneNode> SpriteNode::Create(const pugi::xml_node& xmlNode) {
+std::shared_ptr<Node> SpriteNode::Create(const pugi::xml_node& xmlNode) {
     auto spriteNode = std::make_shared<SpriteNode>();
 
     // Parse texture ID
@@ -27,5 +27,5 @@ void SpriteNode::Render(const AssetManager& assets) {
         DrawTexturePro(tex, src, dst, origin, worldRotation, WHITE);
     }
 
-    SceneNode::Render(assets);
+    Node::Render(assets);
 }

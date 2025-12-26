@@ -1,17 +1,17 @@
-#include "scene_node.hpp"
+#include "node.hpp"
 #include "../asset_manager.hpp"
 #include "raymath.h"
 
-std::shared_ptr<SceneNode> SceneNode::Create(const pugi::xml_node& xmlNode) {
-    return std::make_shared<SceneNode>();
+std::shared_ptr<Node> Node::Create(const pugi::xml_node& xmlNode) {
+    return std::make_shared<Node>();
 }
 
-void SceneNode::AddChild(const std::shared_ptr<SceneNode>& child) {
+void Node::AddChild(const std::shared_ptr<Node>& child) {
     child->parent = this;
     children.push_back(child);
 }
 
-void SceneNode::UpdateTransform() {
+void Node::UpdateTransform() {
     if (parent) {
         worldScale = parent->worldScale * localScale;
         worldRotation = parent->worldRotation + localRotation;
@@ -28,7 +28,7 @@ void SceneNode::UpdateTransform() {
     }
 }
 
-void SceneNode::Render(const AssetManager& assets) {
+void Node::Render(const AssetManager& assets) {
     for (const auto& child : children) {
         child->Render(assets);
     }

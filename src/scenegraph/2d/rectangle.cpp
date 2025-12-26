@@ -6,7 +6,7 @@
  * @param xmlNode The XML node containing rectangle attributes.
  * @return A shared pointer to the created RectangleNode.
  */
-std::shared_ptr<SceneNode> RectangleNode::Create(const pugi::xml_node& xmlNode) {
+std::shared_ptr<Node> RectangleNode::Create(const pugi::xml_node& xmlNode) {
     auto rectNode = std::make_shared<RectangleNode>();
 
     // Width
@@ -59,5 +59,5 @@ void RectangleNode::Render(const AssetManager& assets) {
         }
     }
 
-    SceneNode::Render(assets);
+    Node::Render(assets);
 }

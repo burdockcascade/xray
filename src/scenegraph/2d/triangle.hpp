@@ -2,10 +2,10 @@
 #include <pugixml.hpp>
 #include <string>
 
-#include "../scene_node.hpp"
+#include "../node.hpp"
 #include "../../asset_manager.hpp"
 
-class TriangleNode : public SceneNode {
+class TriangleNode : public Node {
 public:
     TriangleNode() { type = NodeType::Shape; }
 
@@ -15,6 +15,6 @@ public:
     Color color = ::WHITE;
     bool filled = true;
 
-    static std::shared_ptr<SceneNode> Create(const pugi::xml_node& xmlNode);
+    static std::shared_ptr<Node> Create(const pugi::xml_node& xmlNode);
     void Render(const AssetManager& assets) override;
 };

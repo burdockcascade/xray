@@ -2,10 +2,10 @@
 #include <pugixml.hpp>
 #include <string>
 
-#include "../scene_node.hpp"
+#include "../node.hpp"
 #include "../../asset_manager.hpp"
 
-class LabelNode : public SceneNode {
+class LabelNode : public Node {
 public:
     LabelNode() { type = NodeType::Text; }
 
@@ -14,6 +14,6 @@ public:
     int fontSize = 20;
     Color color = ::BLACK;
 
-    static std::shared_ptr<SceneNode> Create(const pugi::xml_node& xmlNode);
+    static std::shared_ptr<Node> Create(const pugi::xml_node& xmlNode);
     void Render(const AssetManager& assets) override;
 };

@@ -6,7 +6,7 @@
  * @param xmlNode The XML node containing rectangle attributes.
  * @return A shared pointer to the created RectangleNode.
  */
-std::shared_ptr<SceneNode> LineNode::Create(const pugi::xml_node& xmlNode) {
+std::shared_ptr<Node> LineNode::Create(const pugi::xml_node& xmlNode) {
     auto lineNode = std::make_shared<LineNode>();
 
     // Start
@@ -40,5 +40,5 @@ void LineNode::Render(const AssetManager& assets) {
         worldPosition.y + (end.y - 0.0f) * worldScale
     };
     DrawLineEx(p1, p2, static_cast<float>(lineThickness) * worldScale, color);
-    SceneNode::Render(assets);
+    Node::Render(assets);
 }

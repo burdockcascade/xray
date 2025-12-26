@@ -13,12 +13,13 @@ enum class NodeType {
     Sprite,
     Text,
     Shape,
-    // Future: Camera, Sound, Collider...
+    Camera,
+    Layer,
 };
 
-class SceneNode {
+class Node {
 public:
-    virtual ~SceneNode() = default;
+    virtual ~Node() = default;
 
     std::string id;
     NodeType type = NodeType::Base;
@@ -34,15 +35,15 @@ public:
     float worldScale = 1.0f;
 
     // Hierarchy
-    SceneNode* parent = nullptr;
-    std::vector<std::shared_ptr<SceneNode>> children;
+    Node* parent = nullptr;
+    std::vector<std::shared_ptr<Node>> children;
 
     // Core Methods
-    void AddChild(const std::shared_ptr<SceneNode>& child);
+    void AddChild(const std::shared_ptr<Node>& child);
     void UpdateTransform();
 
     // Static Create Method: Creates a basic SceneNode from XML
-    static std::shared_ptr<SceneNode> Create(const pugi::xml_node& xmlNode);
+    static std::shared_ptr<Node> Create(const pugi::xml_node& xmlNode);
 
     // Virtual Render: Base node draws nothing, but children might
     virtual void Render(const AssetManager& assets);

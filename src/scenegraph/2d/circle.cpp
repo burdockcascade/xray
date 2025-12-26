@@ -6,7 +6,7 @@
  * @param xmlNode The XML node containing circle attributes.
  * @return A shared pointer to the created CircleNode.
  */
-std::shared_ptr<SceneNode> CircleNode::Create(const pugi::xml_node& xmlNode) {
+std::shared_ptr<Node> CircleNode::Create(const pugi::xml_node& xmlNode) {
     auto circleNode = std::make_shared<CircleNode>();
 
     // Radius
@@ -31,5 +31,5 @@ void CircleNode::Render(const AssetManager& assets) {
     } else {
         DrawCircleLines(static_cast<int>(worldPosition.x), static_cast<int>(worldPosition.y), radius * worldScale, color);
     }
-    SceneNode::Render(assets);
+    Node::Render(assets);
 }

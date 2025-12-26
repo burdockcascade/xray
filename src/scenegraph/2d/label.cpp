@@ -6,7 +6,7 @@
  * @param xmlNode The XML node containing text attributes.
  * @return A shared pointer to the created LabelNode.
  */
-std::shared_ptr<SceneNode> LabelNode::Create(const pugi::xml_node& xmlNode) {
+std::shared_ptr<Node> LabelNode::Create(const pugi::xml_node& xmlNode) {
     auto textNode = std::make_shared<LabelNode>();
 
     // Text Content
@@ -33,5 +33,5 @@ void LabelNode::Render(const AssetManager& assets) {
     // Future: Load font from assets using fontId
     DrawText(text.c_str(), static_cast<int>(worldPosition.x), static_cast<int>(worldPosition.y), fontSize, color);
 
-    SceneNode::Render(assets);
+    Node::Render(assets);
 }

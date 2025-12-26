@@ -2,7 +2,7 @@
 #include <ranges>
 #include <stdexcept>
 #include "logger.hpp"
-#include "scenegraph/scene_node.hpp"
+#include "scenegraph/node.hpp"
 #include "utils.hpp"
 #include "scenegraph/2d/circle.hpp"
 #include "scenegraph/2d/sprite.hpp"
@@ -11,14 +11,14 @@
 #include "scenegraph/2d/triangle.hpp"
 #include "scenegraph/2d/line.hpp"
 
-std::shared_ptr<SceneNode> ParseNode(pugi::xml_node xmlNode) {
+std::shared_ptr<Node> ParseNode(pugi::xml_node xmlNode) {
 
     // 1. The Lookup Table
     // We make this 'static' so it is only created once when the program starts,
     // not every time the function runs.
-    static const std::unordered_map<std::string_view, std::function<std::shared_ptr<SceneNode>(const pugi::xml_node&)>>
+    static const std::unordered_map<std::string_view, std::function<std::shared_ptr<Node>(const pugi::xml_node&)>>
     nodeParsers = {
-        {"node",   SceneNode::Create},
+        {"node",   Node::Create},
         {"sprite", SpriteNode::Create},
         {"label",   LabelNode::Create},
         {"circle", CircleNode::Create},
@@ -37,7 +37,7 @@ std::shared_ptr<SceneNode> ParseNode(pugi::xml_node xmlNode) {
     }
 
     // 4. Run the instruction we found (creates the specific node)
-    std::shared_ptr<SceneNode> node = it->second(xmlNode);
+    std::shared_ptr<Node> node = it->second(xmlNode);
 
     // 5. Apply Common Attributes (Transform, ID, etc.)
     // This runs for EVERY node type, so we keep it outside the map.

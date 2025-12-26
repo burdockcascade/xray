@@ -2,10 +2,10 @@
 #include <pugixml.hpp>
 #include <string>
 
-#include "../scene_node.hpp"
+#include "../node.hpp"
 #include "../../asset_manager.hpp"
 
-class LineNode : public SceneNode {
+class LineNode : public Node {
 public:
     LineNode() { type = NodeType::Shape; }
 
@@ -14,6 +14,6 @@ public:
     Color color = ::WHITE;
     int lineThickness = 1;
 
-    static std::shared_ptr<SceneNode> Create(const pugi::xml_node& xmlNode);
+    static std::shared_ptr<Node> Create(const pugi::xml_node& xmlNode);
     void Render(const AssetManager& assets) override;
 };

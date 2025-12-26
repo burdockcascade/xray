@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "scenegraph/scene_node.hpp"
+#include "scenegraph/node.hpp"
 
 enum class AssetType {
     Texture,
@@ -31,7 +31,7 @@ struct WindowConfig {
 
 struct SceneConfig {
     std::string name;
-    std::vector<std::shared_ptr<SceneNode>> rootNodes;
+    std::vector<std::shared_ptr<Node>> rootNodes;
 };
 
 struct AppConfig {

@@ -16,7 +16,7 @@ public:
 private:
     AppConfig m_config;
     AssetManager m_assets;
-    std::vector<SceneNode> m_scenes;
+    std::vector<Node> m_scenes;
     int m_activeSceneIndex = 0;
 
     // Update game logic
